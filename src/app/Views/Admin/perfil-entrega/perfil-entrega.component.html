@@ -21,7 +21,7 @@
         <ng-container *ngIf="medicationList.length > 0; else noMedication">
         <ul>
           <li *ngFor="let me of delivery?.deliveryDetails?.medications; let index = index" [attr.key]="index">
-            {{ me.medication_name }}
+            {{ me.medication_name }} - {{me.quantity}}
           </li>
         </ul>
       </ng-container>

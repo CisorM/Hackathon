@@ -16,7 +16,7 @@
         <ng-container *ngIf="medicationList.length > 0; else noMedication">
         <ul>
           <li *ngFor="let me of donativo?.medications; let index = index" [attr.key]="index">
-            {{ me.name }}
+            {{ me.name }} (vence: {{ me.medication_details.expiration_date | date }}) || {{me.medication_details.quantity}}
           </li>
         </ul>
       </ng-container>

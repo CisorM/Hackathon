@@ -1,8 +1,8 @@
 .cont{
   display: flex;
-  justify-content: flex-end;
-  gap: 5%;
+  gap: 80px;
 }
+
 
 .wrapper {
   padding: 10px;
@@ -37,4 +37,12 @@
   align-items: start;
   justify-content: start;
   flex-direction: column;
+}
+
+@media (min-width: 1500px) {
+
+  .cont{
+    gap: 100px;
+    justify-content: flex-end;
+  }
 }
