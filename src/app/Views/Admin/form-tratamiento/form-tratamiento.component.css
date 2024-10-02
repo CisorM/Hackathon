@@ -1,0 +1,40 @@
+.cont{
+  display: flex;
+  justify-content: flex-end;
+  gap: 5%;
+}
+
+.wrapper {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-direction: column;
+}
+
+.cards-cont{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(150px, 1fr));
+  gap: 65px;
+  align-items: start;
+  overflow-y: scroll;
+  padding: 15px;
+  height: auto;
+
+}
+
+.card{
+  background-color: dodgerblue;
+  color: white;
+  padding: 10px 20px;
+  min-width: 290px;
+  max-width: 290px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.384);
+  border-radius: 20px;
+  text-align: center;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column;
+}

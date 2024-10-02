@@ -1,0 +1,5 @@
+<form (submit)="realizarBusqueda($event)">
+  <input type="text" placeholder="{{placeholder}}" [(ngModel)]="searchTerm"  name="searchTerm"  />
+  <input class="searchbutton" type="submit" value="Buscar" />
+  <button type="button" class="searchbutton" (click)="limpiarBusqueda()">Reiniciar</button>
+</form>

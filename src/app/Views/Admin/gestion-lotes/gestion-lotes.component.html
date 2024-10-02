@@ -1,0 +1,21 @@
+<app-h1 title="Lotes de Medicamentos"></app-h1>
+
+<div class="horizontal">
+  <app-searchbar
+    placeholder="Buscar por Medicamento"
+    (search)="filterLotes($event)"
+    (clean)="cleanSearch()"
+  ></app-searchbar>
+</div>
+
+<app-table2
+  [items]="filteredLotes"
+  [columns]="columnas"
+  [columnHeaders]="encabezados"
+  [showEdit]="false"
+  [showDelete]="false"
+  (delete)="deleteLote($event)"
+
+  
+>
+</app-table2>

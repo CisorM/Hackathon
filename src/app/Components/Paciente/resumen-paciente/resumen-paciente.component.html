@@ -1,0 +1,11 @@
+<header class="patient-header">
+  <div class="patient-info">
+    <h1 class="patient-name">{{ paciente.patientName }}</h1>
+    <p class="patient-id">{{ paciente.patientId }}</p>
+  </div>
+  <div class="header-actions">
+    <button type="button" class="delete-button" (click)="delete()" aria-label="Eliminar paciente">
+      &times;
+    </button>
+  </div>
+</header>

@@ -1,0 +1,23 @@
+<app-h1 title="Gestion Entrega"></app-h1>
+
+<div class="horizontal">
+  <app-btn [label]="'Crear Entrega'" [route]="'/crearEntrega'"></app-btn>
+  <app-searchbar></app-searchbar>  
+</div>
+
+<app-table2
+  [items]="entregas"
+  [columns]="columnas"
+  [columnHeaders]="encabezados"
+  [showEdit]="false"
+  [showDelete]="false"
+  [showView]="true"
+  [showEntregado]="true"
+  [showProcesado]="false"
+  [showExpirado]="false"
+  [showCancelado]="false"
+  (view)="verEntrega($event)"
+  (entregado)="entregado($event)"
+  (expirado)="expirado($event)"
+>
+</app-table2>

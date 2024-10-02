@@ -1,0 +1,15 @@
+<app-h1 title="Gestion Expirado"></app-h1>
+
+<div class="horizontal">
+  <app-searchbar></app-searchbar>  
+</div>
+
+<app-table2
+  [items]="expirados"
+  [columns]="columnas"
+  [columnHeaders]="encabezados"
+  [showEdit]="false"
+  [showDelete]="false"
+  [showView]="false"
+>
+</app-table2>

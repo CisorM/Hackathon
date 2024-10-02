@@ -1,0 +1,19 @@
+<app-h1 title="Donantes"></app-h1>
+
+<div class="horizontal">
+  <app-searchbar
+    placeholder="Buscar por Rif"
+    (search)="filterDonantes($event)"
+    (clean)="cleanSearch()"
+  ></app-searchbar>
+</div>
+
+<app-table2
+  [items]="filteredDonantes"
+  [columns]="columnas"
+  [columnHeaders]="encabezados"
+  [showEdit]="false"
+  (delete)="deleteDonante($event)"
+  (view)="viewDonante($event)"
+>
+</app-table2>

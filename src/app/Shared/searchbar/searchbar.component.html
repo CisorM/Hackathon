@@ -1,0 +1,17 @@
+<div class="card flex flex-wrap justify-content-center container">
+  <form (submit)="realizarBusqueda($event)" class="search-container flex flex-row">
+    <button class="searchbutton" type="submit">Buscar</button>
+    <button class="searchbutton" type="button" (click)="limpiarBusqueda()">Limpiar</button>
+    <p-iconField class="search-bar" iconPosition="left">
+      <p-inputIcon styleClass="pi pi-search"></p-inputIcon>
+      <input
+        type="text"
+        pInputText
+        placeholder="{{placeholder}}"
+        style="min-width: 700px"
+        name="searchTerm"
+        [(ngModel)]="searchTerm"
+      />
+    </p-iconField>
+  </form>
+</div>

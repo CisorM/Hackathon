@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="flowRoot">
+    <div class="tableWrapper">
+      <div class="tableContainer">
+        <table>
+          <thead>
+            <tr>
+              <th *ngFor="let header of columnHeaders">{{ header }}</th>
+              <th class="actions" *ngIf="showEdit || showDelete || showView || showProcesado || showExpirado || showEntregado || showCancelado">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of items">
+              <td *ngFor="let column of columns">
+                {{ item[column] }}
+              </td>
+              <td class="actions" *ngIf="showEdit || showDelete || showView || showProcesado || showExpirado || showEntregado || showCancelado">
+                <button class="edit" *ngIf="showEdit" (click)="edit.emit(item)">Editar</button>
+                <button class="delete" *ngIf="showDelete" (click)="delete.emit(item)">Eliminar</button>
+                <button class="view" *ngIf="showView" (click)="view.emit(item)">Ver</button>
+                <button class="options" *ngIf="showProcesado" (click)="procesado.emit(item)">Procesado</button>
+                <button class="options" *ngIf="showExpirado" (click)="expirado.emit(item)">Expirado</button>
+                <button class="options" *ngIf="showEntregado" (click)="entregado.emit(item)">Entregado</button>
+                <button class="options" *ngIf="showCancelado" (click)="cancelado.emit(item)">Cancelado</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

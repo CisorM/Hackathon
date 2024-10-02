@@ -1,0 +1,11 @@
+<div class="card flex justify-content-center">
+    <p-sidebar [(visible)]="sidebarVisible" class="p-sidebar">
+        <h3>Bienvenido, {{name }}</h3>
+        <div class="button-container">
+            <button pButton type="button" (click)="goToDashboard()" label="" icon="pi pi-home" class="dashboard-button p-m-2"></button>
+            <button pButton type="button" (click)="logout()" label="Cerrar sesión" icon="pi pi-sign-out" class="dashboard-button p-m-2"></button>
+        </div>
+        <p-panelMenu [model]="items" class="p-panelMenu" *ngIf="menuVisible === true"></p-panelMenu>
+    </p-sidebar>
+    <p-button (onClick)="sidebarVisible = true" icon="pi pi-arrow-right" class="btn-sidebar" />
+</div>

@@ -1,0 +1,17 @@
+<app-h1 title="Comunidades"></app-h1>
+<div class="horizontal">
+  <app-btn [label]="'Crear Comunidad'" [route]="'/crearComunidad'"></app-btn>
+  <app-searchbar
+    placeholder="Buscar por Nombre"
+    (search)="filterComunidades($event)"
+    (clean)="cleanSearch()"
+  ></app-searchbar>
+</div>
+<app-table2
+  [items]="filteredComunidad"
+  [columns]="columnas"
+  [columnHeaders]="encabezados"
+  [showEdit]="false"
+  [showView]="false"
+  (delete)="deleteComunidad($event)"
+></app-table2>

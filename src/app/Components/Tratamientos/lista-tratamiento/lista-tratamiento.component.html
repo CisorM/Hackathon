@@ -1,0 +1,13 @@
+<main class="wrapper">
+  <div class="header-cont">
+    <h2>Selecciona un Tratamiento</h2>
+  </div>
+  <button class="gobackbutton" (click)="delete()">Volver</button>
+  <div class="cards-cont">
+    <app-card-tratamiento
+      *ngFor="let treatment of filteredTreatments"
+      [treatment]="treatment"
+      (click)="seleccionarTratamiento(treatment)"
+    ></app-card-tratamiento>
+  </div>
+</main>

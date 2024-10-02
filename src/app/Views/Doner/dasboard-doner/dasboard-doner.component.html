@@ -1,0 +1,129 @@
+<app-h1 class="h1" title="Dashboard de Donante"></app-h1>
+<h1>Bienvenido {{name}}</h1>
+<div class="dashboard-container">
+<div class="tabs">
+    <button class="tab-button" [class.active]="activeTab === 'required'" data-tab="required" (click)="onTabClick('required')">Medicamentos más requeridos</button>
+    <button class="tab-button" [class.active]="activeTab === 'donated'" data-tab="donated" (click)="onTabClick('donated')">Medicamentos más donados</button>
+    <button class="tab-button" [class.active]="activeTab === 'expired'" data-tab="expired" (click)="onTabClick('expired')">Medicamentos vencidos</button>
+    <button class="tab-button" [class.active]="activeTab === 'expiring-soon'" data-tab="expiring-soon" (click)="onTabClick('expiring-soon')">Medicamentos cerca de vencer</button>
+    <button class="tab-button" [class.active]="activeTab === 'urgent'" data-tab="urgent" (click)="onTabClick('urgent')">Medicamentos urgentes</button>
+    <button class="tab-button" [class.active]="activeTab === 'by-community'" data-tab="by-community" (click)="onTabClick('by-community')">Medicamentos por comunidad</button>
+</div>
+
+  <div class="tab-content" [class.active]="activeTab === 'required'" id="required">
+    <h2 class="report-title">Medicamentos más requeridos</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Medicamento</th>
+          <th>Usados</th>
+          <th>En existencia</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let med of mostRequiredMedicationsCopy">
+          <td>{{med.medication_name}}</td>
+          <td>{{med.usage_count}}</td>
+          <td>{{med.total_quantity}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tab-content" [class.active]="activeTab === 'donated'" id="donated">
+    <h2 class="report-title">Medicamentos más donados</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Medicamento</th>
+          <th>Donados</th>
+          <th>Total donados</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let med of mostDonatedMedicationsCopy">
+          <td>{{ med.medication_name }}</td>
+          <td>{{ med.donation_count }}</td>
+          <td>{{ med.total_donated }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tab-content" [class.active]="activeTab === 'expired'" id="expired">
+    <h2 class="report-title">Medicamentos vencidos</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Medicamento</th>
+          <th>Cantidad</th>
+          <th>Fecha de vencimiento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let med of medicationsExpiredCopy">
+          <td>{{ med.medication_name }}</td>
+          <td>{{ med.quantity }}</td>
+          <td>{{ med.expiration_date | date }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tab-content" [class.active]="activeTab === 'expiring-soon'" id="expiring-soon">
+    <h2 class="report-title">Medicamentos cerca de vencer</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Medicamento</th>
+          <th>Cantidad</th>
+          <th>Fecha de vencimiento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let med of medicationsByExpiredSoon">
+          <td>{{ med.medication_name }}</td>
+          <td>{{ med.quantity }}</td>
+          <td>{{ med.expiration_date | date }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tab-content" [class.active]="activeTab === 'urgent'" id="urgent">
+    <h2 class="report-title">Medicamentos urgentes</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Medicamento</th>
+          <th>Requerido</th>
+          <th>En inventario</th>
+          <th>Faltante</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let med of medicationsUrgency">
+          <td>{{ med.medication_name }}</td>
+          <td>{{ med.total_required }}</td>
+          <td>{{ med.inventory_available }}</td>
+          <td>{{ med.shortage }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tab-content" [class.active]="activeTab === 'by-community'" id="by-community">
+    <h2 class="report-title">Medicamentos requeridos por comunidad</h2>
+    <div class="communities-grid">
+      <div class="community-card" *ngFor="let community of medicationsByCommunityCopy">
+        <h3 class="community-name">{{ community.community_name }}</h3>
+        <ul class="medications-list">
+          <li class="medication-item" *ngFor="let medication of community.medications">
+            <span class="medication-name">{{ medication.medication_name }}</span>
+            <span class="medication-amount">{{ medication.total_medicamentos_necesitados }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

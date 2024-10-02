@@ -1,0 +1,10 @@
+<div class="card flex justify-content-center">
+    <p-floatLabel>
+        <input pInputText id="email" [(ngModel)]="value" name="email" #email="ngModel" required email />
+        <label for="email">Email</label>
+    </p-floatLabel>
+    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error">
+        <div *ngIf="email.errors?.['required']">Email es requerido.</div>
+        <div *ngIf="email.errors?.['email']">Email no es válido.</div>
+    </div>
+</div>

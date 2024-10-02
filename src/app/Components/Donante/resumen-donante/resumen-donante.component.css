@@ -1,0 +1,18 @@
+.patient-detail{
+  min-width: 335px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-left: 10px;
+}
+.patient-data{
+  font-weight: 600;
+}
+
+.delete-button{
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ff0000;
+  font-size: 1.5rem;
+}

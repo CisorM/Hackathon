@@ -1,0 +1,58 @@
+<aside class="sidebar">
+  <h1 class="title">Generar Entrega</h1>
+
+  <div class="treatment-container">
+    <p *ngIf="!delivery?.patient_id && delivery?.medications" class="empty-message">
+      La Entrega está vacía
+    </p>
+
+    <div *ngIf="delivery?.patient_id || delivery?.medications?.length" class="treatment-details">
+      <app-resumen-paciente
+        [paciente]="{ patientName: delivery?.patient_name! , patientId: delivery!.patient_id.toString()}"
+        (deletePatient)="deletePatient()"
+      ></app-resumen-paciente>
+
+      <ng-container *ngFor="let medicine of delivery!.medications">
+        <app-card-medicamento-entrega
+          [medicine]="{
+            name: medicine ? medicine.name : 'Sin nombre',
+            id: medicine ? medicine.id! : 0,
+            quantity: medicine.delivery_details.quantity,
+            maxQuantity : medicine.delivery_details.max_quantity!
+          }"
+          (medicineDeleted)="onMedicineDeleted(+$event)"
+          (quantityIncreased)="onQuantityIncreased(+$event)"
+          (quantityDecreased)="onQuantityDecreased(+$event)">
+        </app-card-medicamento-entrega>
+      </ng-container>
+    </div>
+
+    <div class="treatment-form" *ngIf="delivery!.patient_id && delivery!.medications && delivery!.medications.length > 0">
+      <p>Fecha para vencimiento de entrega</p>
+      <input
+        type="date"
+        placeholder="Fecha Vencimiento consulta"
+        class="name-input"
+        name="name"
+        (change)="onExpireDateChange($event)"
+        [value]="delivery?.expiration_date"
+      />
+      <p>Fecha para Cita de entrega</p>
+      <input
+        type="date"
+        placeholder="Fecha Cita consulta"
+        class="name-input"
+        name="name"
+        (change)="onApoinmentDateChange($event)"
+        [value]="delivery?.appointment_date"
+      />
+
+      <button
+        type="submit"
+        class="submit-button"
+        value="Confirmar Tratamiento"
+        (click)="saveDelivery()"
+      >Confirmar Entrega</button>
+    </div>
+  </div>
+</aside>

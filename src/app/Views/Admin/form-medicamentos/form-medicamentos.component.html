@@ -1,0 +1,14 @@
+<app-h1 title="Crear Medicamento"></app-h1>
+<div class="container">
+  <form>
+    <div class="form-group">
+      <label class="label">Nombre:</label>
+      <input type="text" [(ngModel)]="medicamento.name" name="name" placeholder="Ingrese el nombre del medicamento">
+    </div>
+    <div class="form-group">
+      <label class="label">Cantidad:</label>
+      <input type="number" [(ngModel)]="medicamento.quantity" name="quantity" placeholder="Ingrese la cantidad del medicamento">
+    </div>
+    <button type="button" (click)="createMedicamento()">Crear Medicamento</button>
+  </form>
+</div>

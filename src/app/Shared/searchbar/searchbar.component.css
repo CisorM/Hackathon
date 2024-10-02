@@ -1,0 +1,35 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.search-bar {
+  width: 60vw; /* 70% of the viewport width */
+  max-width: 70vw; /* to prevent it from growing beyond 70% */
+}
+
+.search-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+app-btn {
+  margin-right: 10px;
+}
+
+
+.searchbutton{
+
+  background-color: dodgerblue;
+  color: white;
+  cursor: pointer;
+  border: 2px solid dodgerblue;
+  margin-right:  10px;
+  border-radius: 5px;
+  padding: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  font-size: medium;
+}

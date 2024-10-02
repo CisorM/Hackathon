@@ -1,0 +1,20 @@
+
+<div class="patient-card">
+  <div class="patient-card-header">
+    <h2>{{ treatment?.id }}</h2>
+    <p class="id-card">{{ translateStatus(treatment?.status) }}</p>
+  </div>
+  <div class="patient-card-body">
+    <div class="contact-info">
+      <p>{{ treatment?.observation }}</p>
+    </div>
+    <div class="pathologies">
+      <h3>Medicamentos:</h3>
+      <ul>
+        <li *ngFor="let medication of treatment?.medications">
+          {{ medication.name }}, Cantidad: {{ medication.quantity }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

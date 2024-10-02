@@ -1,0 +1,15 @@
+
+<div class="cont">
+  <app-lista-donante
+    *ngIf="!donation?.charity_id"
+    (donanteSeleccionado)="onDonanteSeleccionado($event)"
+
+  ></app-lista-donante>
+  <app-lista-medicinas
+    *ngIf="donation?.charity_id"
+    (medicinaSeleccionada)="onMedicinaSeleccionada($event)"
+    (deletePatient)="onDeleteDonante()"
+  ></app-lista-medicinas>
+
+  <app-resumen-donacion></app-resumen-donacion>
+</div>

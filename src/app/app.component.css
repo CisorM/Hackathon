@@ -1,0 +1,14 @@
+.outlet{
+
+  animation: fadeIn .6s ease-in; /* Cambia la duración y el tipo de easing si es necesario */
+  padding: 0;
+  margin: 0;
+}
+@keyframes fadeIn {
+  0% {
+      opacity: 0; /* Comienza completamente transparente */
+  }
+  100% {
+      opacity: 1; /* Termina completamente opaco */
+  }
+}

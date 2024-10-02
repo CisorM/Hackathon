@@ -1,0 +1,41 @@
+<aside class="sidebar">
+  <h1 class="title">Crear Tratamiento</h1>
+
+  <div class="treatment-container">
+    <p *ngIf="!treatment.patient_id && treatment.medications.length === 0" class="empty-message">
+      El Tratamiento está vacío
+    </p>
+
+    <div *ngIf="treatment.patient_id || treatment.medications.length > 0" class="treatment-details">
+      <app-resumen-paciente
+        [paciente]="{ patientName: treatment.patientName, patientId: treatment.patient_id }"
+        (deletePatient)="deletePatient()"
+      ></app-resumen-paciente>
+
+      <ng-container *ngFor="let medicine of treatment.medications">
+        <app-resumen-medicina
+          [medicine]="medicine"
+          (medicineDeleted)="onMedicineDeleted($event)"
+          (quantityIncreased)="onQuantityIncreased($event)"
+          (quantityDecreased)="onQuantityDecreased($event)">
+        </app-resumen-medicina>
+      </ng-container>
+    </div>
+
+    <div class="treatment-form" *ngIf="treatment.patient_id && treatment.medications && treatment.medications.length > 0">
+      <input
+        type="text"
+        placeholder="Observaciones"
+        class="name-input"
+        name="name"
+        (change)="onObservationChange($event)"
+      />
+      <button
+        (click)="saveTreatment()"
+        class="submit-button"
+        value="Confirmar Tratamiento"
+        [textContent]="'Confirmar tratamiento'"
+      ></button>
+    </div>
+  </div>
+</aside>

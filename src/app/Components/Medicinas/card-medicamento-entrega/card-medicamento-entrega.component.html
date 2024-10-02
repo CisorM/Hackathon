@@ -1,0 +1,20 @@
+<div class="medicine-card">
+  <div class="medicine-content">
+    <div class="medicine-header">
+      <p class="medicine-name">{{ medicine.name }}</p>
+      <button type="button" class="delete-button" (click)="deleteMedicine()">
+        &times;
+      </button>
+    </div>
+
+    <div class="medicine-quantity-controls">
+      <button type="button" class="decrease-button" (click)="decreaseQuantity()" [disabled]="medicine.quantity <= 0">
+        -
+      </button>
+      <p class="medicine-quantity">{{ medicine.quantity }} / {{ medicine.maxQuantity }}</p>
+      <button type="button" class="increase-button" (click)="increaseQuantity()" [disabled]="medicine.quantity >= medicine.maxQuantity">
+        +
+      </button>
+    </div>
+  </div>
+</div>

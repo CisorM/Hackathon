@@ -1,0 +1,27 @@
+<div class="container">
+  <section class="patient-card">
+    <div class="patient-card-header">
+      <h2>{{ donativo?.charity?.razon_social }}</h2>
+      <p class="id-card"><span>Creado: {{donativo?.createdAt | date: 'yyyy-MM-dd' }}</span></p>
+      <p class="id-card">{{ donativo?.category?.name }}</p>
+    </div>
+    <div class="patient-card-body">
+      <div class="contact-info">
+        <div class="info_flex">
+          <p><span>{{ donativo?.description }}</span></p>
+        </div>
+      </div>
+      <div class="pathologies">
+        <h3>Medicinas</h3>
+        <ng-container *ngIf="medicationList.length > 0; else noMedication">
+        <ul>
+          <li *ngFor="let me of donativo?.medications; let index = index" [attr.key]="index">
+            {{ me.name }}
+          </li>
+        </ul>
+      </ng-container>
+      <ng-template #noMedication>No hay medicinas asignadas</ng-template>
+      </div>
+    </div>
+  </section>
+</div>

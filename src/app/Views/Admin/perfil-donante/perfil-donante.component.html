@@ -1,0 +1,31 @@
+<div class="container">
+  <section class="patient-card">
+    <div class="patient-card-header">
+      <h2>{{ charity?.id }}</h2>
+      <p class="id-card">{{ id_card }}</p>
+    </div>
+    <div class="patient-card-body">
+      <div class="contact-info">
+        <div class="info_flex">
+          <p>Razón Social <span>{{ charity?.razon_social }}</span></p>
+          <p><span>{{ fundacion }}</span></p>
+        </div>
+      </div>
+      <div class="donations">
+        <h3>Donaciones</h3>
+        <ng-container *ngIf="donationsList.length > 0; else noDonations">
+          <div class="donations-list">
+            <div class="donation-item" *ngFor="let don of donationsList; let index = index" [attr.key]="index">
+              <div class="donation-name">{{ don.name }}</div>
+              <div class="donation-quantity">cantidad: {{ don.donation.quantity }}</div>
+              <div class="donation-expiration">{{ don.donation.expirationDate | date:'dd/MM/yyyy' }}</div>
+            </div>
+          </div>
+        </ng-container>
+        <ng-template #noDonations>
+          <p class="no-donations">No hay donaciones asignadas</p>
+        </ng-template>
+      </div>
+    </div>
+  </section>
+</div>

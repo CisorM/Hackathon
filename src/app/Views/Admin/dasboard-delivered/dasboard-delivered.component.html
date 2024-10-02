@@ -1,0 +1,44 @@
+<app-h1 class="h1" title="Dashboard de Donante"></app-h1>
+<h1>Bienvenido {{name}}</h1>
+<div class="dashboard-container">
+<div class="tabs">
+    <button class="tab-button" [class.active]="activeTab === 'comunidad'" data-tab="comunidad" (click)="onTabClick('comunidad')">Comunidades más abastecidas</button>
+    <button class="tab-button" [class.active]="activeTab === 'medicamentos'" data-tab="medicamentos" (click)="onTabClick('medicamentos')">Medicamentos más entregados</button>
+    <button class="tab-button" [class.active]="activeTab === 'paciente'" data-tab="paciente" (click)="onTabClick('paciente')">Pacientes más abastecidos</button>
+</div>
+  <div class="tab-content" [class.active]="activeTab === 'comunidad'" id="comunidad">
+    <h2 class="report-title">Comunidades más abastecidas</h2>
+      <div class="communities-grid">
+          <ul class="medications-list">
+            <li class="medication-item" *ngFor="let community of communitiesMostDelivered">
+              <span class="medication-name">{{ community.community_name }}</span>
+              <span class="medication-amount">{{ community.total_medications_delivered }}</span>
+            </li>
+          </ul>
+      </div>
+  </div>
+
+  <div class="tab-content" [class.active]="activeTab === 'medicamentos'" id="medicamentos">
+    <h2 class="report-title">Medicamentos más entregados</h2>
+      <div class="communities-grid">
+          <ul class="medications-list">
+            <li class="medication-item" *ngFor="let medication of deliveredMedications">
+              <span class="medication-name">{{ medication.medication_name }}</span>
+              <span class="medication-amount">{{ medication.total_delivered }}</span>
+            </li>
+          </ul>
+      </div>
+  </div>
+
+  <div class="tab-content" [class.active]="activeTab === 'paciente'" id="paciente">
+    <h2 class="report-title">Pacientes más abastecidos</h2>
+    <div class="communities-grid">
+        <ul class="medications-list">
+          <li class="medication-item" *ngFor="let patients of mostDeliveredPatients">
+            <span class="medication-name">{{ patients.medication_name}} {{patients.patient_last_name}}</span>
+            <span class="medication-amount">{{ patients.total_deliveries }}</span>
+          </li>
+        </ul>
+    </div>
+  </div>
+</div>

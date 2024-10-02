@@ -1,0 +1,22 @@
+<app-h1 title="Categoría"></app-h1>
+
+<div class="horizontal">
+  <app-btn [label]="'Crear Categoría'" [route]="'/crearCategoria'"></app-btn>
+  <app-searchbar
+    placeholder="Buscar por Nombre"
+    (search)="filterCategories($event)"
+    (clean)="cleanSearch()"
+  ></app-searchbar>
+</div>
+
+<app-table2
+  [items]="filteredCategoria.length > 0 ? filteredCategoria : categories"
+  [columns]="columnas"
+  [columnHeaders]="encabezados"
+  [showDelete]="true"
+  [showEdit]="false"
+  [showView]="false"
+  (delete)="deleteCategory($event)"
+
+>
+</app-table2>

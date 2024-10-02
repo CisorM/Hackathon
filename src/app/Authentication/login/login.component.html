@@ -1,0 +1,12 @@
+<form class="container" [formGroup]="formLogin" (ngSubmit)="iniciarSesion()">
+    <app-card [title]="'Inicia Sesión'">
+        <p>Inicia sesión con tu correo y contraseña</p>
+        <div class="form">
+            <input placeholder="Ingrese su correo" class="inputForm" formControlName="email" required />
+    
+            <input placeholder="Ingrese su contreseña" class="inputForm" formControlName="password" type="password" required />
+        </div>
+
+        <app-btn type="submit" label="Iniciar Sesión"></app-btn>
+    </app-card>
+</form>

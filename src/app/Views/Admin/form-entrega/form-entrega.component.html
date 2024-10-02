@@ -1,0 +1,15 @@
+<div class="cont">
+  <app-lista-pacientes
+    *ngIf="!delivery?.patient_id"
+    (pacienteSeleccionado)="onPacienteSeleccionado($event)"
+  ></app-lista-pacientes>
+  <app-lista-tratamiento
+    *ngIf="delivery?.patient_id"
+    [idPaciente]="delivery!.patient_id"
+    [id]="delivery!.patientidCard"
+    (tratamientoSeleccionado)="onTratamientoSeleccionado($event)"
+    (deletePatient)="onDeletePaciente()"
+  ></app-lista-tratamiento>
+
+  <app-resumen-entrega></app-resumen-entrega>
+</div>

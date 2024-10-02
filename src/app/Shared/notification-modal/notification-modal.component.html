@@ -1,0 +1,24 @@
+<div [ngClass]="{'modal-container': true, 'active': visible}">
+  <div class="modalbuttonclose-container" (click)="closeModal()">
+    <i class="pi pi-sign-out"></i>
+  </div>
+  <div class="wrapper">
+    <div class="notificationssection">
+      <h2>Notificaciones</h2>
+      <div class="notification-wrapper">
+        <div *ngFor="let notification of notifications" class="notification">
+          <i class="pi pi-exclamation-triangle"></i>{{ notification }}
+        </div>
+        <div *ngIf="notifications.length === 0" class="notification">
+          No hay notificaciones.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="menuVisible === true" class="notifications-container">
+  <button class="notifications-button" (click)="showModal()">
+    <i class="pi pi-bell"></i>
+    <span class="notifications-count">{{notifications.length}}</span>
+  </button>
+</div>

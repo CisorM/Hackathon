@@ -1,0 +1,20 @@
+<app-h1 title="Pacientes Vulnerables"></app-h1>
+
+<div class="horizontal">
+  <app-searchbar
+    placeholder="Buscar por Cédula"
+    (search)="filterPacientes($event)"
+    (clean)="cleanSearch()"
+  ></app-searchbar>
+</div>
+
+<app-table2
+  [items]="filteredPacientes"
+  [columns]="columnas"
+  [columnHeaders]="encabezados"
+  [showEdit]="false"
+  [showDelete]="false"
+  [showView]="true"
+  (view)="onView($event)"
+>
+</app-table2>

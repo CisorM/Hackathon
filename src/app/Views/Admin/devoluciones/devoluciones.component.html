@@ -1,0 +1,13 @@
+<app-h1 title="Devoluciones"></app-h1>
+<div class="horizontal">
+  <app-btn [label]="'Crear Devolución'" [route]="'/crearDevolucion'"></app-btn>
+  <app-searchbar></app-searchbar>  
+</div>
+<app-table2
+  [items]="devoluciones"
+  [columns]="columnas"
+  [columnHeaders]="encabezados"
+  (edit)="editDevolucion($event)"
+  (delete)="deleteDevolucion($event)"
+>
+</app-table2>

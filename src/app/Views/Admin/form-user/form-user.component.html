@@ -1,0 +1,65 @@
+<div class="container">
+  <h1>Crear usuario</h1>
+  <form>
+    <div class="form-group">
+      <label for="first_name" class="label">Nombre:</label>
+      <input id="first_name" type="text" [(ngModel)]="form.first_name" name="first_name" placeholder="Ingrese el nombre del usuario" required>
+    </div>
+    <div class="form-group">
+      <label for="last_name" class="label">Apellido:</label>
+      <input id="last_name" type="text" [(ngModel)]="form.last_name" name="last_name" placeholder="Ingrese el apellido del usuario" required>
+    </div>
+    <div class="form-group">
+      <label for="id_card" class="label">Cédula de identidad:</label>
+      <div class="id-card-input">
+        <select id="id_card_prefix" [(ngModel)]="form.id_card_prefix" name="id_card_prefix" required>
+          <option value="V-">V-</option>
+          <option value="J-">J-</option>
+          <option value="G-">G-</option>
+          <option value="E-">E-</option>
+        </select>
+        <input id="id_card" type="text" maxlength="9" [(ngModel)]="form.id_card" name="id_card" placeholder="Ingrese la cédula de identidad del usuario" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email" class="label">Correo electrónico:</label>
+      <input id="email" type="email" [(ngModel)]="form.email" name="email" placeholder="Ingrese el correo electrónico del usuario" required>
+    </div>
+    <div class="form-group">
+      <label for="password" class="label">Contraseña:</label>
+      <input id="password" type="password" [(ngModel)]="form.password" name="password" placeholder="Ingrese la contraseña" required>
+    </div>
+    <div class="form-group">
+      <label for="confirm_password" class="label">Repetir contraseña:</label>
+      <input id="confirm_password" type="password" [(ngModel)]="form.confirm_password" name="confirm_password" placeholder="Repita la contraseña" required>
+    </div>
+    <div class="form-group">
+      <label class="label">Tipo de usuario</label>
+      <div class="user-type-cards">
+        <div class="user-type-card" [class.selected]="form.userType === 'admin'" (click)="selectUserType('admin')">
+          <i class="fas fa-user-cog"></i>
+          <span>Administrador</span>
+        </div>
+        <div class="user-type-card" [class.selected]="form.userType === 'donor'" (click)="selectUserType('donor')">
+          <i class="fas fa-hand-holding-heart"></i>
+          <span>Donante</span>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="form.userType === 'donor'" class="donor-fields">
+      <div class="form-group">
+        <label for="razon_social" class="label">Razón Social:</label>
+        <input id="razon_social" type="text" [(ngModel)]="form.razon_social" name="razon_social" placeholder="Ingrese la razón social">
+      </div>
+      <div class="form-group">
+        <label for="description" class="label">Descripción:</label>
+        <textarea id="description" [(ngModel)]="form.description" name="description" placeholder="Ingrese una descripción"></textarea>
+      </div>
+      <div class="form-group checkbox-group">
+        <input id="is_fundation" type="checkbox" [(ngModel)]="form.is_fundation" name="is_fundation">
+        <label for="is_fundation" class="checkbox-label">¿Es fundación?</label>
+      </div>
+    </div>
+    <button type="button" (click)="createUser()">Crear usuario</button>
+  </form>
+</div>

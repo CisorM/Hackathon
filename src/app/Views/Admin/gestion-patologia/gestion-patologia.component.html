@@ -1,0 +1,17 @@
+<app-h1 title="Patologías"></app-h1>
+<div class="horizontal">
+  <app-btn [label]="'Crear Patología'" [route]="'/crearPatologia'"></app-btn>
+  <app-searchbar
+    placeholder="Buscar por Nombre"
+    (search)="filterPatologias($event)"
+    (clean)="cleanSearch()"
+  ></app-searchbar>
+</div>
+<app-table2
+  [items]="filteredPatologias"
+  [columns]="columnas"
+  [columnHeaders]="encabezados"
+  [showEdit]="false"
+  (delete)="deletePatologia($event)"
+>
+</app-table2>

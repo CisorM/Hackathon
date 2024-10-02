@@ -1,0 +1,26 @@
+<main class="wrapper">
+  <div class="header-cont">
+    <h2>Selecciona Las Medicinas</h2>
+    <div class="searchbarcont">
+      <button class="gobackbutton" (click)="delete()">Volver</button>
+      <app-search-bar-input
+        placeholder="Insertar Nombre"
+        (search)="realizarBusqueda($event)"
+        (clean)="limpiarBusqueda()"
+      ></app-search-bar-input>
+    </div>
+  </div>
+
+  <div class="cards-cont">
+    <ng-container *ngIf="filteredMedicines.length > 0; else noMedicines">
+      <app-card-medicamento
+        *ngFor="let medicine of filteredMedicines"
+        [medicine]="medicine"
+        (click)="seleccionarMedicina(medicine)"
+      ></app-card-medicamento>
+    </ng-container>
+    <ng-template #noMedicines>
+      <p>No se encontraron medicinas. Intenta otra búsqueda.</p>
+    </ng-template>
+  </div>
+</main>

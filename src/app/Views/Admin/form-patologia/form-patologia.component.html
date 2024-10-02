@@ -1,0 +1,9 @@
+<app-h1 title="Crear Patología"></app-h1>
+<div class="container">
+  <form>
+    <div class="form-group">
+      <label class="label">Nombre de la patología:</label>
+      <input type="text" [ngModel]="patologia.name" (ngModelChange)="patologia.name = $event" name="name" placeholder="Ingrese el nombre de la patología" required>    </div>
+    <button type="button" (click)="createPatologia()">Crear Patología</button>
+  </form>
+</div>

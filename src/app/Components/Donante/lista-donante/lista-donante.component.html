@@ -1,0 +1,20 @@
+<main class="wrapper">
+  <div class="header-cont">
+    <h2>Selecciona un Donante</h2>
+    <div>
+      <app-search-bar-input
+        placeholder="Insertar identificación"
+        (search)="realizarBusqueda($event)"
+        (clean)="limpiarBusqueda()"
+      ></app-search-bar-input>
+    </div>
+  </div>
+
+  <div class="cards-cont">
+    <app-card-donante
+      *ngFor="let charity of (filteredCharities.length ? filteredCharities : charities)"
+      [charity]="charity"
+      (click)="seleccionarDonante(charity)"
+    ></app-card-donante>
+  </div>
+</main>

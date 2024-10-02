@@ -1,0 +1,17 @@
+<app-h1 title="Desecho de Medicamentos"></app-h1>
+<div class="horizontal">
+  <app-searchbar
+    placeholder="Buscar por Nombre"
+    (search)="filterDesechos($event)"
+    (clean)="cleanSearch()"
+  ></app-searchbar>
+</div>
+<app-table2
+  [items]="filteredDesechos"
+  [columns]="columnas"
+  [columnHeaders]="encabezados"
+  [showDelete]="true"
+  [showEdit]="true"
+  (edit)="editDesecho($event)"
+  (delete)="deleteDesecho($event)"
+></app-table2>

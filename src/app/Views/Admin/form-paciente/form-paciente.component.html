@@ -1,0 +1,139 @@
+<app-h1 title="Crear Paciente"></app-h1>
+<div class="container">
+  <form>
+    <div class="form-group">
+      <label class="label">Nombre:</label>
+      <input
+        type="text"
+        [(ngModel)]="form.first_name"
+        name="first_name"
+        placeholder="Ingrese el nombre del paciente"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label class="label">Apellido:</label>
+      <input
+        type="text"
+        [(ngModel)]="form.last_name"
+        name="last_name"
+        placeholder="Ingrese el apellido del paciente"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label class="label">Fecha de nacimiento:</label>
+      <input
+        type="date"
+        [(ngModel)]="form.birth_date"
+        name="birth_date"
+        placeholder="Ingrese la fecha de nacimiento del paciente"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label class="label">Correo electrónico:</label>
+      <input
+        type="email"
+        [(ngModel)]="form.email"
+        name="email"
+        placeholder="Ingrese el correo electrónico del paciente"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label class="label">Cédula de identidad:</label>
+      <div class="id-card-input">
+        <select
+          id="id_card_prefix"
+          [(ngModel)]="form.id_card_prefix"
+          name="id_card_prefix"
+          required
+        >
+          <option value="V-">V-</option>
+          <option value="J-">J-</option>
+          <option value="G-">G-</option>
+          <option value="E-">E-</option>
+        </select>
+        <input
+          id="id_card"
+          type="text"
+          [(ngModel)]="form.id_card"
+          name="id_card"
+          placeholder="Ingrese la cédula de identidad del paciente"
+          required
+        />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="label">Teléfono:</label>
+      <input
+        type="text"
+        [(ngModel)]="form.phone"
+        name="phone"
+        placeholder="Ingrese el teléfono del paciente"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label class="label">Dirección:</label>
+      <input
+        type="text"
+        [(ngModel)]="form.address"
+        name="address"
+        placeholder="Ingrese la dirección del paciente"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label class="label">Género:</label>
+      <select [(ngModel)]="form.gender" name="gender" required>
+        <option value="masculino">Masculino</option>
+        <option value="femenino">Femenino</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="label">Estado económico:</label>
+      <select
+        [(ngModel)]="form.economic_status"
+        name="economic_status"
+        required
+      >
+        <option value="clase alta">Clase alta</option>
+        <option value="clase media">Clase media</option>
+        <option value="clase baja">Clase baja</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="label">Patologías:</label>
+      <div *ngFor="let pathology of pathologies">
+        <input type="checkbox" [(ngModel)]="pathology.selected" name="pathology-{{ pathology.id }}" (change)="updatePathologies()">
+        <span>{{ pathology.name }}</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="label">Descripción de la patología:</label>
+      <input
+        type="text"
+        [(ngModel)]="form.pathology_description"
+        name="pathology_description"
+        placeholder="Ingrese la descripción de la patología del paciente"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label class="label">Nivel de vulnerabilidad:</label>
+      <select
+        [(ngModel)]="form.vulnerability_level"
+        name="vulnerability_level"
+        required
+      >
+        <option value="muy critico">Muy crítico</option>
+        <option value="critico">Crítico</option>
+        <option value="medio">Medio</option>
+        <option value="bajo">Bajo</option>
+      </select>
+    </div>
+    <button type="button" (click)="createPaciente()">Crear Paciente</button>
+  </form>
+</div>

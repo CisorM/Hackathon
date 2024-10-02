@@ -1,0 +1,20 @@
+<div class="patient-card">
+  <div class="patient-card-header">
+    <h2>{{ pacientName }}</h2>
+    <p class="id-card">{{ pacient?.id_card }}</p>
+  </div>
+  <div class="patient-card-body">
+    <div class="contact-info">
+      <p>{{ pacient?.phone }}</p>
+      <p>{{ pacient?.community?.name }}</p>
+    </div>
+    <div class="pathologies">
+      <h3>Patologías:</h3>
+      <ul>
+        <li *ngFor="let pa of pacient?.pathologies; let index = index" [attr.key]="index">
+          {{ pa.name }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

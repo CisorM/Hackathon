@@ -1,0 +1,49 @@
+<aside class="sidebar">
+  <h1 class="title">Crear Donacion</h1>
+
+  <div class="treatment-container">
+    <p *ngIf="!donation?.charity_id && !donation?.medications" class="empty-message">
+      La donacion está vacía
+    </p>
+
+    <select name="category" id="category-select" (change)="onCategorySelected($event)">
+      <option value="">Seleccione una Categoría</option>
+      <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+    </select>
+
+    <div *ngIf="donation?.charity_id || donation?.medications?.length" class="treatment-details">
+      <app-resumen-donante
+        [donante]="{charityId: donation?.charity_id!, charityName : donation?.charity_name!, razon_social : donation?.razon_social!}"
+        (deleteCharity)="deleteCharity()"
+      ></app-resumen-donante>
+
+      <ng-container *ngFor="let medicine of donation?.medications">
+        <app-card-medicamento-with-date
+          [medicine]="{
+            name: medicine.name || 'Sin nombre',
+            id: medicine.medication_id || 0,
+            quantity: medicine.quantity || 0,
+            expiration_date: medicine.expiration_date ? medicine.expiration_date : ''
+          }"
+          (medicineDeleted)="onMedicineDeleted(medicine.medication_id)"
+          (quantityIncreased)="onQuantityIncreased(medicine.medication_id)"
+          (quantityDecreased)="onQuantityDecreased(medicine.medication_id)"
+          (dateChanged)="onDateChanged(medicine.medication_id, $event.newDate)"
+        >
+        </app-card-medicamento-with-date>
+      </ng-container>
+    </div>
+
+    <div class="treatment-form" *ngIf="donation?.charity_id && donation?.medications && donation?.medications?.length" >
+      <input
+        type="text"
+        placeholder="Descripción"
+        class="name-input"
+        name="name"
+        #descriptionInput
+        (change)="onDesacriptionChange($event)"
+      />
+      <button (click)="saveDonation()"  class="submit-button">Confirmar Donacion</button>
+    </div>
+  </div>
+</aside>

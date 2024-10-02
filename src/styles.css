@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+@import 'ngx-toastr/toastr';
+
+
+body{
+  background-color: #f9f9f9;
+  padding: 0;
+  margin: 0;
+  transition: all .2s linear;
+  scroll-behavior: smooth;
+
+}
+
