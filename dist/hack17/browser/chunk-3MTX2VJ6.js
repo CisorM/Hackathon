@@ -1,0 +1,1 @@
+import{$ as o,Eb as i,Mb as s,jb as a,kb as n}from"./chunk-LJKVXSQR.js";var m=(()=>{class t{static{this.\u0275fac=function(e){return new(e||t)}}static{this.\u0275cmp=o({type:t,selectors:[["app-patologias"]],standalone:!0,features:[s],decls:2,vars:0,template:function(e,r){e&1&&(a(0,"p"),i(1,"patologias works!"),n())}})}}return t})();export{m as default};
