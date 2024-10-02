@@ -3,6 +3,7 @@
 <div class="dashboard-container">
 <div class="tabs">
     <button class="tab-button" [class.active]="activeTab === 'required'" data-tab="required" (click)="onTabClick('required')">Medicamentos más requeridos</button>
+    <button class="tab-button" [class.active]="activeTab === 'patient'" data-tab="patient" (click)="onTabClick('patient')">Pacientes por patología</button>
     <button class="tab-button" [class.active]="activeTab === 'donated'" data-tab="donated" (click)="onTabClick('donated')">Medicamentos más donados</button>
     <button class="tab-button" [class.active]="activeTab === 'expired'" data-tab="expired" (click)="onTabClick('expired')">Medicamentos vencidos</button>
     <button class="tab-button" [class.active]="activeTab === 'expiring-soon'" data-tab="expiring-soon" (click)="onTabClick('expiring-soon')">Medicamentos cerca de vencer</button>
@@ -126,4 +127,17 @@
       </div>
     </div>
   </div>
+  
+  <div class="tab-content" [class.active]="activeTab === 'patient'" id="patient">
+    <h2 class="report-title">Pacientes por patología</h2>
+    <div class="communities-grid">
+        <ul class="medications-list">
+          <li class="medication-item" *ngFor="let patients of pacientesPatologiaCopy">
+            <span class="medication-name">{{ patients.pathology_name}}</span>
+            <span class="medication-amount">{{ patients.patient_count }}</span>
+          </li>
+        </ul>
+    </div>
+  </div>
 </div>
+

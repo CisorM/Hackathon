@@ -73,4 +73,10 @@ export class ReportesService {
       headers: this.getHeaders(),
     });
   }
+
+  getPatientCount(): Observable<any> {
+    return this.http.get(`${this.apiUrl}pathology/getPatientCount`, {
+      headers: this.getHeaders(),
+    });
+  }
 }

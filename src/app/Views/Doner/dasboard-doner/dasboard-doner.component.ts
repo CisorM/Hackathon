@@ -28,10 +28,13 @@ export default class DasboardDonerComponent implements OnInit {
   medicationsByExpiredSoonCopy: any[] = [];
   medicationsUrgency: any[] = [];
   medicationsUrgencyCopy: any[] = [];
+  pacientesPatologia: any[] = [];
+  pacientesPatologiaCopy: any[] = [];
 
   constructor(private reportesService: ReportesService) {}
   tabs = [
     { id: 'required', label: 'Medicamentos más requeridos' },
+    { id: 'patient', label: 'Pacientes por patología' },
     { id: 'donated', label: 'Medicamentos más donados' },
     { id: 'expired', label: 'Medicamentos vencidos' },
     { id: 'expiring-soon', label: 'Medicamentos cerca de vencer' },
@@ -41,6 +44,7 @@ export default class DasboardDonerComponent implements OnInit {
 
   contents = [
     { id: 'required', text: 'Medicamentos más requeridos' },
+    { id: 'patient', text: 'Pacientes por patología' },
     { id: 'donated', text: 'Medicamentos más donados' },
     { id: 'expired', text: 'Medicamentos vencidos' },
     { id: 'expiring-soon', text: 'Medicamentos cerca de vencer' },
@@ -123,6 +127,15 @@ export default class DasboardDonerComponent implements OnInit {
       }
     );
 
+    this.reportesService.getPatientCount().subscribe(
+      (response) => {
+        this.pacientesPatologia = response.data.patientCountByPathology;
+        this.pacientesPatologiaCopy = this.pacientesPatologia.slice(0, 15);
+      },
+      (error) => {
+        console.error('Error al obtener los datos de comunidad:', error);
+      }
+    );
     this.reportesService.getMedicationsUrgency().subscribe(
       (response) => {
         this.medicationsUrgency = response.data.Medication;
